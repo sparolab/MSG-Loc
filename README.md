@@ -20,6 +20,7 @@
   <a href="https://scholar.google.com/citations?hl=ko&user=2bvLmqQAAAAJ" target="_blank">Juwon Kim</a><sup></sup>,
   <a href="https://scholar.google.com/citations?user=gGfBRawAAAAJ&hl=ko" target="_blank">Young-Sik Shin</a><sup>†</sup>,
   <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>†</sup>
+  
   <br />
   <b>[Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
   <br />
