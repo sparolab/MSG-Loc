@@ -30,7 +30,7 @@
 
   <!-- Teaser image -->
   <p align="center">
-    <img src="fig/msg_loc.png" alt="MSG-Loc" width="75%" />
+    <img src="fig/msg_loc.png" alt="MSG-Loc" width="70%" />
   </p>
 
 </div>
