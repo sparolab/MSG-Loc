@@ -27,6 +27,7 @@
   <br />
 
   <b>[Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
+  <br />
   <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b>
 
   <!-- Teaser image -->
