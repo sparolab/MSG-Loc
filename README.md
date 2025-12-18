@@ -39,7 +39,7 @@
 
 ## NEWS
 * [Dec, 2025] Project page is now available.
-* [Nov, 2025] MSG-Loc has been accepted by IEEE Robotics and Automation Letters (RA-L).
+* [Nov, 2025] 🎉 MSG-Loc has been accepted by IEEE Robotics and Automation Letters (RA-L). 🎉
 
 
 ---
