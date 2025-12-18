@@ -8,7 +8,7 @@
   <!-- Project / Paper / Preprint / Media -->
   <a href="https://sparolab.github.io/research/msg-loc/"><img src="https://img.shields.io/badge/Project-Website-2ea44f" alt="Project" /></a>
   <a href="https://doi.org/10.1109/LRA.2025.3643293"><img src="https://img.shields.io/badge/Paper-RA--L%20PDF-yellow" alt="Paper" /></a>
-  <a href="https://doi.org/10.48550/arXiv.2512.03522"><img src="https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg?style=flat-square" alt="arXiv" /></a>
+  <a href="https://doi.org/10.48550/arXiv.2512.03522"><img src="https://img.shields.io/badge/arXiv-2512.03522-b31b1b.svg?style=flat-square" alt="arXiv" /></a>
   <a href="<YOUR_YOUTUBE_URL>"><img src="https://badges.aleen42.com/src/youtube.svg" alt="YouTube" /></a>
 
   <br />
@@ -25,13 +25,12 @@
   <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>†</sup>
 
   <br />
-  <br />
 
   <b>[Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
 
   <!-- Teaser image -->
   <p align="center">
-    <img src="fig/msgloc_teaser.png" alt="MSG-Loc teaser" width="75%" />
+    <img src="fig/msg_loc.png" alt="MSG-Loc" width="75%" />
   </p>
 
 </div>
