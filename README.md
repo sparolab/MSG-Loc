@@ -46,7 +46,7 @@
 
 ## Citation
 If you find this repository useful, please consider citing:
-
+## Citation
 ```bibtex
 @ARTICLE{lee2025msgloc,
             author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
@@ -59,6 +59,8 @@ If you find this repository useful, please consider citing:
             keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic Scene Understanding;Localization;Graph Matching;Object-based SLAM},
             doi={10.1109/LRA.2025.3643293}
         }
+```
 ---
 ## Contact
 * Gihyeon Lee (leekh951@inha.edu)
+---
