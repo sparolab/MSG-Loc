@@ -46,7 +46,6 @@
 
 ## Citation
 If you find this repository useful, please consider citing:
-## Citation
 ```bibtex
 @ARTICLE{lee2025msgloc,
             author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
