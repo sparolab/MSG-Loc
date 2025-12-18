@@ -12,9 +12,7 @@
   <a href="<YOUR_YOUTUBE_URL>"><img src="https://badges.aleen42.com/src/youtube.svg" alt="YouTube" /></a>
 
   <br />
-  <br />
-
-  <b>[IEEE RA-L]</b> This repository is the official implementation of
+  <b>[IEEE RA-L'25 w/ ICRA'26]</b> This repository is the official implementation of
   <b>"MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"</b>.
 
   <br />
