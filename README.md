@@ -33,7 +33,7 @@
 </p>
   <!-- Teaser image -->
   <p align="center">
-    <img src="fig/contribution.png" alt="MSG-Loc" width="95%" />
+    <img src="fig/contribution.png" alt="MSG-Loc" width="99%" />
   </p>
 </div>
 
