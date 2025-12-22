@@ -26,15 +26,15 @@
   <br />
   <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b>
 
+<!-- Demo GIFs -->
+<p align="center">
+  <img src="fig/git_desk.gif" alt="Desk Demo" width="50%" />
+  <img src="fig/git_walk.gif" alt="Walk Demo" width="50%" />
+</p>
   <!-- Teaser image -->
   <p align="center">
     <img src="fig/msg_loc.png" alt="MSG-Loc" width="70%" />
   </p>
-<!-- Demo GIFs -->
-<p align="center">
-  <img src="fig/git_desk.gif" alt="Desk Demo" width="45%" />
-  <img src="fig/git_walk.gif" alt="Walk Demo" width="45%" />
-</p>
 </div>
 
 ---
