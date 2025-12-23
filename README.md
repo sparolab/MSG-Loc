@@ -1,6 +1,10 @@
 <div align="center">
   <h1>MSG-Loc</h1>
-
+<!-- Demo GIFs -->
+<p align="center">
+  <img src="fig/git_desk.gif" alt="Desk Demo" width="49%" />
+  <img src="fig/git_walk.gif" alt="Walk Demo" width="49%" />
+</p>
   <!-- Languages -->
   <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus" /></a>
   <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a>
@@ -26,11 +30,6 @@
   <br />
   <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b>
 
-<!-- Demo GIFs -->
-<p align="center">
-  <img src="fig/git_desk.gif" alt="Desk Demo" width="49%" />
-  <img src="fig/git_walk.gif" alt="Walk Demo" width="49%" />
-</p>
   <!-- Teaser image -->
   <p align="center">
     <img src="fig/contribution.png" alt="MSG-Loc" width="99%" />
