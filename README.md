@@ -6,9 +6,8 @@
   <img src="fig/git_walk.gif" alt="Walk Demo" width="49%" />
 </p>
   <!-- Languages -->
-  <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus" /></a>
-  <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a>
-
+  <!-- <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus" /></a>
+  <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a> -->
   <!-- Project / Paper / Preprint / Media -->
   <a href="https://sparolab.github.io/research/msg-loc/"><img src="https://img.shields.io/badge/Project-Website-2ea44f" alt="Project" /></a>
   <a href="https://doi.org/10.1109/LRA.2025.3643293"><img src="https://img.shields.io/badge/Paper-RA--L%20PDF-yellow" alt="Paper" /></a>
