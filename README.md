@@ -9,8 +9,8 @@
   <!-- <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus" /></a>
   <a href="https://github.com/<YOUR_ORG>/<YOUR_REPO>"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a> -->
   <!-- Project / Paper / Preprint / Media -->
-  <a href="https://sparolab.github.io/research/msg-loc/"><img src="https://img.shields.io/badge/Project-Website-2ea44f" alt="Project" /></a>
-  <a href="https://doi.org/10.1109/LRA.2025.3643293"><img src="https://img.shields.io/badge/Paper-RA--L%20PDF-yellow" alt="Paper" /></a>
+  <a href="https://sparolab.github.io/research/msg-loc/"><img src="https://img.shields.io/badge/Project-Website-2ea44f?style=flat&logo=githubpages&logoColor=white" alt="Project" /></a>
+  <a href="https://doi.org/10.1109/LRA.2025.3643293"><img src="https://img.shields.io/badge/Paper-IEEE%20Xplore-0073cf?style=flat&logo=ieee&logoColor=white" alt="Paper" /></a>
   <a href="https://doi.org/10.48550/arXiv.2512.03522"><img src="https://img.shields.io/badge/arXiv-2512.03522-b31b1b.svg?style=flat-square" alt="arXiv" /></a>
   <a href="<YOUR_YOUTUBE_URL>"><img src="https://badges.aleen42.com/src/youtube.svg" alt="YouTube" /></a>
   <br />
