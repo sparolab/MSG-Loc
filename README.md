@@ -47,16 +47,16 @@
 If you find this repository useful, please consider citing:
 ```bibtex
 @ARTICLE{lee2025msgloc,
-            author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
-            journal={IEEE Robotics and Automation Letters},
-            title={MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization},
-            year={2025},
-            volume={},
-            number={},
-            pages={1-8},
-            keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic Scene Understanding;Localization;Graph Matching;Object-based SLAM},
-            doi={10.1109/LRA.2025.3643293}
-        }
+  author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={MSG-Loc: Multi-Label Likelihood-Based Semantic Graph Matching for Object-Level Global Localization}, 
+  year={2026},
+  volume={11},
+  number={2},
+  pages={2066-2073},
+  keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic scene understanding;localization;graph matching;object-based SLAM},
+  doi={10.1109/LRA.2025.3643293}
+}
 ```
 ---
 ## Contact
