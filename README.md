@@ -46,7 +46,7 @@
 ## Citation
 If you find this repository useful, please consider citing:
 ```bibtex
-@ARTICLE{lee2025msgloc,
+@ARTICLE{lee2026msgloc,
   author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
   journal={IEEE Robotics and Automation Letters}, 
   title={MSG-Loc: Multi-Label Likelihood-Based Semantic Graph Matching for Object-Level Global Localization}, 
