@@ -9,7 +9,7 @@
   <a href="https://doi.org/10.48550/arXiv.2512.03522"><img src="https://img.shields.io/badge/arXiv-2512.03522-b31b1b.svg?style=flat-square" alt="arXiv" /></a>
   <a href="<YOUR_YOUTUBE_URL>"><img src="https://badges.aleen42.com/src/youtube.svg" alt="YouTube" /></a>
   <br />
-  <b>[IEEE RA-L'25]</b> This repository is the official implementation of
+  <b>[IEEE RA-L'26]</b> This repository is the official implementation of
   <b>"MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"</b>.
   <br />
   <!-- Authors (replace href with your links; or remove href if you prefer plain text) -->
