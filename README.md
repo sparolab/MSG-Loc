@@ -20,7 +20,7 @@
   <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>†</sup>
   <br />
   
-<b>[Inha University, USpatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
+<b>[Inha University, Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
   <br />
   <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b> & <b>[Kyungpook National University (KNU)](https://www.knu.ac.kr/)</b>
 <!-- Demo GIFs -->
