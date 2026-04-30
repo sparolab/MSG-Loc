@@ -86,7 +86,7 @@ Build the package:
 ```code
 cd /root/workspace
 mkdir -p src
-git clone https://github.com/Leekh951/MSG-Loc.git src/MSG-Loc
+git clone https://github.com/sparolab/MSG-Loc.git src/MSG-Loc
 source /opt/ros/noetic/setup.bash
 catkin_make
 source devel/setup.bash
