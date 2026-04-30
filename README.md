@@ -117,7 +117,7 @@ TBU
 
 ---
 
-### 4. SLAM
+### 4. Object SLAM
 
 TBU
 
@@ -173,7 +173,15 @@ If you find this repository useful, please consider citing:
 
 ## Acknowledgement
 
-We appreciate the open-source contributions of previous authors, and especially thank the authors of the following projects for releasing their code and models to the community:
+<p align="center">
+  <img src="fig/inha.png" alt="Inha University" width="30%" />
+  <img src="fig/knu.jpg" alt="Kyungpook National University" width="30%" />
+  <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="30%" />
+</p>
+
+We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we extend our sincere gratitude to the members of the SPARO Lab, Prof. Young-Sik Shin at the RoMA Lab, and KIMM for their valuable support.
+
+In addition, we appreciate the open-source contributions of previous authors, and especially thank the authors of the following projects for releasing their code and models to the community:
 
 - [GOReloc](https://github.com/yutongwangBIT/GOReloc)
 - [Semantic Histogram](https://github.com/gxytcrc/semantic-histogram-based-global-localization)
