@@ -114,12 +114,17 @@ Download the datasets and place them under `/root/workspace/dataset_root/`.
 ---
 
 ### 3. Detection
+Generate object detection and multi-label prediction results:
+- Open-set: [Grounding DINO](https://github.com/idea-research/groundingdino), [Tokenize Anything via Prompting](https://github.com/baaivision/tokenize-anything)
+- Closed-set: [YOLOv8 (Multi-label ver)](https://github.com/Leekh951/ultralytics)
 
 TBU
 
 ---
 
 ### 4. Object SLAM
+Build the prior semantic map and graph:
+
 
 TBU
 
@@ -153,6 +158,10 @@ roslaunch MSG-Loc msgloc_node.launch \
 
 The launch file starts `msgloc_node` and RViz with `rviz_msgloc.rviz`. The estimated pose is published on `/msgloc_pose`, visualization markers are published on `/msgloc_map_objects`, `/msgloc_map_edges`, and `/msgloc_pose_markers`, and the estimated trajectory is saved to `MSG-Loc_results/pose_results.txt`.
 
+<p align="center">
+  <img src="fig/msgloc.gif" alt="MSG-Loc RViz Demo" width="90%" />
+</p>
+
 ---
 
 ## Citation
@@ -182,9 +191,9 @@ If you find this repository useful, please consider citing:
   <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="20%" />
 </p>
 
-We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we extend our sincere gratitude to the members of the SPARO Lab, Prof. Young-Sik Shin at the RoMA Lab, and KIMM for their valuable support.
+We extend our sincere gratitude to the members of the SPARO Lab, Prof. Young-Sik Shin of the RoMA Lab, and KIMM for their valuable support and collaboration.
 
-In addition, we appreciate the open-source contributions of previous authors, and especially thank the authors of the following projects for releasing their code and models to the community:
+We also sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. Our benchmarking and analysis benefited greatly from publicly available baseline methods and open-source implementations, and we especially thank the authors of the following projects for releasing their code and models to the community:
 
 - [GOReloc](https://github.com/yutongwangBIT/GOReloc)
 - [Semantic Histogram](https://github.com/gxytcrc/semantic-histogram-based-global-localization)

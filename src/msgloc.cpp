@@ -955,7 +955,7 @@ void publishMapMarkers() {
     edge_marker.id = 0;
     edge_marker.type = visualization_msgs::Marker::LINE_LIST;
     edge_marker.action = visualization_msgs::Marker::ADD;
-    edge_marker.scale.x = 0.015;
+    edge_marker.scale.x = 0.01;
     edge_marker.color.r = 0.05;
     edge_marker.color.g = 0.85;
     edge_marker.color.b = 0.35;
