@@ -37,6 +37,7 @@
 ---
 
 ## NEWS
+* [Apr, 2026] Code has been released.
 * [Dec, 2025] Project page is now available.
 * [Nov, 2025] 🎉 MSG-Loc has been accepted by IEEE Robotics and Automation Letters (RA-L).
 
@@ -51,7 +52,7 @@ The code is tested on:
 - Ubuntu 20.04
 - ROS Noetic
 - CUDA 12.1.1
-- CMake 3.22.3
+- CMake 3.22
 - [gtsam_quadrics](https://github.com/qcr/gtsam-quadrics)
 
 Docker image:
@@ -112,43 +113,13 @@ Download the datasets and place them under `/root/workspace/dataset_root/`.
 
 ### 3. Detection
 
-Default detection results are already provided in `Detection_results/`. Run detection only if you need to regenerate the results or use a different dataset/model.
-
-- Open-set: [Grounding DINO](https://github.com/idea-research/groundingdino), [Tokenize Anything via Prompting](https://github.com/baaivision/tokenize-anything)
-- Closed-set: [YOLOv8 (Multi-label ver)](https://github.com/Leekh951/ultralytics)
-
-Command format:
-
-```code
-rosrun MSG-Loc detection_storage_gdino_lvis.py \
-  _assoc_path:=/root/workspace/dataset_root/<dataset>/associated.txt \
-  _base_path:=/root/workspace/dataset_root/<dataset> \
-  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/<camera>.yaml \
-  _output_dir:=/root/workspace/src/MSG-Loc/Detection_results \
-  _save_name:=<sequence>_gdino_lvis_detections.json
-```
-
-Detailed detection commands are provided in `scripts.txt`.
+TBU
 
 ---
 
 ### 4. SLAM
 
-Default map JSON files are already provided in `SLAM_results/` (for example, `desk_map.json` and `walk_map.json`). Run SLAM only if you need to rebuild the prior semantic map and graph.
-
-Command format:
-
-```code
-rosrun MSG-Loc quadricSLAM.py \
-  _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/<detections>.json \
-  _odom_path:=/root/workspace/dataset_root/<dataset>/<odom>.txt \
-  _base_path:=/root/workspace/dataset_root/<dataset> \
-  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/<camera>.yaml \
-  _output_dir:=/root/workspace/src/MSG-Loc/SLAM_results \
-  _save_name:=<map>.json
-```
-
-Detailed SLAM commands are provided in `scripts.txt`.
+TBU
 
 ---
 
