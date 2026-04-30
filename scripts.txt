@@ -1,7 +1,7 @@
 --------------------------Global Localization (MSG-Loc)---------------------------
 ###### Fr2_desk ######
 ### Open-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_gdino_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_gdino_lvis_detections.json \
@@ -9,7 +9,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
 
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_gdino_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_gdino_coco_detections.json \
@@ -18,7 +18,7 @@ roslaunch MSG-Loc msgloc_node \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results  
 
 ### Closed-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_yolo_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_yolo_lvis_detections.json \
@@ -26,7 +26,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results    
 
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_yolo_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_yolo_coco_detections.json \
@@ -36,7 +36,7 @@ roslaunch MSG-Loc msgloc_node \
 
 ###### Walk ######
 ### Open-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_gdino_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/walk_gdino_lvis_detections.json \
@@ -44,7 +44,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
   
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_gdino_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/walk_gdino_coco_detections.json \
@@ -53,7 +53,7 @@ roslaunch MSG-Loc msgloc_node \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
 
 ### Closed-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_yolo_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/walk_yolo_lvis_detections.json \
@@ -61,7 +61,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
   
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_yolo_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/walk_yolo_coco_detections.json \
@@ -72,7 +72,7 @@ roslaunch MSG-Loc msgloc_node \
 
 ###### Head ######
 ### Open-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_gdino_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/head_gdino_lvis_detections.json \
@@ -80,7 +80,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
   
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_gdino_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/head_gdino_coco_detections.json \
@@ -89,7 +89,7 @@ roslaunch MSG-Loc msgloc_node \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
 
 ### Closed-set ###
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_yolo_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/head_yolo_lvis_detections.json \
@@ -97,7 +97,7 @@ roslaunch MSG-Loc msgloc_node \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
   
-roslaunch MSG-Loc msgloc_node \
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/walk_yolo_coco_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/head_yolo_coco_detections.json \
