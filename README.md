@@ -22,7 +22,9 @@
   
 <b>[Inha University, Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
   <br />
-  <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b> & <b>[Kyungpook National University (KNU)](https://www.knu.ac.kr/)</b>
+<b>[Kyungpook National University (KNU), Robotics, Mobility and AI Lab (RoMA)](https://www.knu.ac.kr/)</b>
+  <br />
+<b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b>
 <!-- Demo GIFs -->
 <p align="center">
   <img src="fig/git_desk.gif" alt="Desk Demo" width="49%" />
