@@ -1,0 +1,24 @@
+%YAML:1.0
+---
+
+# Source graph and multi-label matching
+k_neighbors: 5
+min_range_m: 0.10
+max_range_m: 20.0
+assoc_tol_sec: 0.050
+valid_label_topk: 5
+match_topk: 3
+min_valid_label_count: 4
+max_label_matches: 5
+match_distance_threshold: 1.0
+
+# Pose estimation
+ransac_iters: 2000
+omp_num_threads: 8
+wasserstein_constant: 100.0
+pose_inlier_threshold: 0.5
+
+# Offline sequence range
+sequence_index: 0
+start_frame: 0
+end_frame: -1
