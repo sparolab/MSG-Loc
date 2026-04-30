@@ -127,10 +127,10 @@ TBU
 
 ### 5. MSG-Loc
 
-Run global localization:
+Run global localization with RViz:
 
-```code
-rosrun MSG-Loc test_node \
+```bash
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
   _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/<map>.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/<detections>.json \
@@ -141,17 +141,17 @@ rosrun MSG-Loc test_node \
 
 Example for Fr2_desk:
 
-```code
-rosrun MSG-Loc test_node \
+```bash
+roslaunch MSG-Loc msgloc_node.launch \
   _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
-  _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_map.json \
+  _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_gdino_lvis_map.json \
   _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_gdino_lvis_detections.json \
   _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
   _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
 ```
 
-The estimated trajectory is saved to `MSG-Loc_results/pose_results.txt`.
+The launch file starts `msgloc_node` and RViz with `rviz_msgloc.rviz`. The estimated pose is published on `/msgloc_pose`, visualization markers are published on `/msgloc_map_objects`, `/msgloc_map_edges`, and `/msgloc_pose_markers`, and the estimated trajectory is saved to `MSG-Loc_results/pose_results.txt`.
 
 ---
 
