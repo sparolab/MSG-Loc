@@ -166,7 +166,6 @@ If you find this repository useful, please consider citing:
   volume={11},
   number={2},
   pages={2066-2073},
-  keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic scene understanding;localization;graph matching;object-based SLAM},
   doi={10.1109/LRA.2025.3643293}
 }
 ```
