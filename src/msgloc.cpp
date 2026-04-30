@@ -12,6 +12,10 @@
 #include <gtsam/nonlinear/Symbol.h>  // GTSAM Symbol
 #include <image_geometry/pinhole_camera_model.h>
 #include <cv_bridge/cv_bridge.h>
+#include <geometry_msgs/Point.h>
+#include <nav_msgs/Odometry.h>
+#include <visualization_msgs/Marker.h>
+#include <visualization_msgs/MarkerArray.h>
 //gtsam_quadric//
 #include <gtsam_quadrics/geometry/ConstrainedDualQuadric.h>
 #include <gtsam_quadrics/geometry/QuadricCamera.h>
@@ -27,6 +31,7 @@
 #include <filesystem>
 #include <cerrno>
 #include <cstring>
+#include <algorithm>
 using json = nlohmann::json;
 ///////////////////////////// method  //////////////////////////
 using LabelCandidateMap = std::map<std::string, std::pair<std::vector<uint8_t>, float>>;
@@ -334,7 +339,13 @@ public:
                 if (val.is_array()) {
                     vec.reserve(val.size());
                     for (const auto& x : val) {
-                        if (x.is_number()) vec.push_back(static_cast<float>(x.get<double>()));
+                        if (x.is_number()) {
+                            vec.push_back(static_cast<float>(x.get<double>()));
+                        } else if (x.is_array()) {
+                            for (const auto& y : x) {
+                                if (y.is_number()) vec.push_back(static_cast<float>(y.get<double>()));
+                            }
+                        }
                     }
                 } else if (val.is_number()) {
                     vec.push_back(static_cast<float>(val.get<double>()));
@@ -419,6 +430,18 @@ public:
 /////////////////////////////// End of database handling ///////////////////////////////////////
 class Msgloc {
 private:
+    ros::NodeHandle nh_;
+    ros::NodeHandle pnh_;
+    ros::Publisher map_object_marker_pub_;
+    ros::Publisher map_edge_marker_pub_;
+    ros::Publisher pose_marker_pub_;
+    ros::Publisher pose_odom_pub_;
+    std::string rviz_frame_id_ = "test";
+    std::string pose_child_frame_id_ = "msgloc_camera";
+    std::vector<visualization_msgs::Marker> pose_arrow_markers_;
+    std::vector<geometry_msgs::Point> pose_path_points_;
+    int pose_marker_id_ = 0;
+
     static std::string joinPath(const std::string& a, const std::string& b) {
         if (a.empty()) return b;
         if (b.empty()) return a;
@@ -441,6 +464,81 @@ private:
         ) return rel;
         if (g_msgloc.base_path.empty()) return rel;
         return joinPath(g_msgloc.base_path, rel);
+    }
+
+    geometry_msgs::Point makePoint(double x, double y, double z) const {
+        geometry_msgs::Point p;
+        p.x = x;
+        p.y = y;
+        p.z = z;
+        return p;
+    }
+
+    visualization_msgs::Marker makeDeleteAllMarker(const ros::Time& stamp) const {
+        visualization_msgs::Marker marker;
+        marker.header.frame_id = rviz_frame_id_;
+        marker.header.stamp = stamp;
+        marker.action = visualization_msgs::Marker::DELETEALL;
+        return marker;
+    }
+
+    double markerScaleFromRadius(double r) const {
+        if (!std::isfinite(r) || r <= 0.0) return 0.1;
+        return std::max(0.1, 2.0 * r);
+    }
+
+    bool applyBaselineColor(gtsam::Key key, visualization_msgs::Marker& marker) const {
+        const auto baseline_it = loadedData.BaselineLabel.find(key);
+        if (baseline_it == loadedData.BaselineLabel.end()) return false;
+
+        const auto& labels = baseline_it->second;
+        if (labels.empty()) return false;
+
+        const std::vector<float>* best_stats = nullptr;
+        double best_p_norm = -1.0;
+        for (const auto& kv : labels) {
+            const auto& stats = kv.second;
+            if (stats.empty()) continue;
+            if (stats[0] > best_p_norm) {
+                best_p_norm = stats[0];
+                best_stats = &stats;
+            }
+        }
+
+        if (!best_stats) return false;
+
+        // map.json compact format: [p_norm, [r,g,b]] -> parsed as [p_norm,r,g,b].
+        // Older in-memory format may be [p_norm,sum,total,r,g,b].
+        size_t color_idx = 0;
+        if (best_stats->size() == 4) {
+            color_idx = 1;
+        } else if (best_stats->size() >= 6) {
+            color_idx = 3;
+        } else {
+            return false;
+        }
+
+        const double r = (*best_stats)[color_idx + 0];
+        const double g = (*best_stats)[color_idx + 1];
+        const double b = (*best_stats)[color_idx + 2];
+        const double max_rgb = std::max({r, g, b});
+        const double denom = (max_rgb > 1.0) ? 255.0 : 1.0;
+
+        marker.color.r = std::clamp(r / denom, 0.0, 1.0);
+        marker.color.g = std::clamp(g / denom, 0.0, 1.0);
+        marker.color.b = std::clamp(b / denom, 0.0, 1.0);
+        marker.color.a = 0.75;
+        return true;
+    }
+
+    void setupVisualizationPublishers() {
+        pnh_.param<std::string>("rviz_frame_id", rviz_frame_id_, rviz_frame_id_);
+        pnh_.param<std::string>("pose_child_frame_id", pose_child_frame_id_, pose_child_frame_id_);
+
+        map_object_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_map_objects", 1, true);
+        map_edge_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_map_edges", 1, true);
+        pose_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_pose_markers", 1, true);
+        pose_odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/msgloc_pose_odom", 50);
     }
 
 public:
@@ -494,8 +592,9 @@ public:
         read_optional_double("Camera.skew", g_msgloc.skew);
     }
 
-    Msgloc()
+    Msgloc() : nh_(), pnh_("~")
     {
+        setupVisualizationPublishers();
         loadCameraInfoFromYaml(g_msgloc.cam_info_path);
 
         ROS_INFO("Config path: %s", g_msgloc.config_path.c_str());
@@ -509,6 +608,7 @@ public:
         StorageManager::loadAllData(loadedData, g_msgloc.map_path);
         updateResultValues();
         setupCameraInfo();
+        publishMapMarkers();
         // 2) Load detection JSON
         loadjson();
     }
@@ -801,6 +901,165 @@ void setupCameraInfo() {
     ROS_INFO("cam_info.K[0]: %f, cam_info.K[4]: %f, cam_info.K[2]: %f, cam_info.K[5]: %f",
              cam_info.K[0], cam_info.K[4], cam_info.K[2], cam_info.K[5]);
     ROS_INFO("fx: %f, fy: %f, cx: %f, cy: %f", cam_model.fx(), cam_model.fy(), cam_model.cx(), cam_model.cy());
+}
+
+void publishMapMarkers() {
+    if (!map_object_marker_pub_ || !map_edge_marker_pub_) return;
+
+    const ros::Time stamp = ros::Time::now();
+    visualization_msgs::MarkerArray object_marker_array;
+    visualization_msgs::MarkerArray edge_marker_array;
+    object_marker_array.markers.reserve(loadedData.graph.nodes.size() + 1);
+    edge_marker_array.markers.reserve(2);
+    object_marker_array.markers.push_back(makeDeleteAllMarker(stamp));
+    edge_marker_array.markers.push_back(makeDeleteAllMarker(stamp));
+
+    int marker_id = 0;
+    for (const auto& kv : loadedData.graph.nodes) {
+        const QuadricNode& node = kv.second;
+
+        visualization_msgs::Marker marker;
+        marker.header.frame_id = rviz_frame_id_;
+        marker.header.stamp = stamp;
+        marker.ns = "msgloc_map_nodes";
+        marker.id = marker_id++;
+        marker.type = visualization_msgs::Marker::SPHERE;
+        marker.action = visualization_msgs::Marker::ADD;
+
+        marker.pose.position.x = node.translation.x();
+        marker.pose.position.y = node.translation.y();
+        marker.pose.position.z = node.translation.z();
+        marker.pose.orientation.x = node.orientation[1];
+        marker.pose.orientation.y = node.orientation[2];
+        marker.pose.orientation.z = node.orientation[3];
+        marker.pose.orientation.w = node.orientation[0];
+
+        marker.scale.x = markerScaleFromRadius(node.radii.x());
+        marker.scale.y = markerScaleFromRadius(node.radii.y());
+        marker.scale.z = markerScaleFromRadius(node.radii.z());
+
+        if (!applyBaselineColor(kv.first, marker)) {
+            marker.color.r = 0.15;
+            marker.color.g = 0.85;
+            marker.color.b = 0.45;
+            marker.color.a = 0.65;
+        }
+        marker.lifetime = ros::Duration(0.0);
+        object_marker_array.markers.push_back(marker);
+    }
+
+    visualization_msgs::Marker edge_marker;
+    edge_marker.header.frame_id = rviz_frame_id_;
+    edge_marker.header.stamp = stamp;
+    edge_marker.ns = "msgloc_map_edges";
+    edge_marker.id = 0;
+    edge_marker.type = visualization_msgs::Marker::LINE_LIST;
+    edge_marker.action = visualization_msgs::Marker::ADD;
+    edge_marker.scale.x = 0.015;
+    edge_marker.color.r = 0.05;
+    edge_marker.color.g = 0.85;
+    edge_marker.color.b = 0.35;
+    edge_marker.color.a = 0.75;
+    edge_marker.lifetime = ros::Duration(0.0);
+
+    for (const auto& edge : loadedData.graph.edges) {
+        const auto it1 = loadedData.graph.nodes.find(edge.first.first);
+        const auto it2 = loadedData.graph.nodes.find(edge.first.second);
+        if (it1 == loadedData.graph.nodes.end() || it2 == loadedData.graph.nodes.end()) continue;
+
+        edge_marker.points.push_back(makePoint(it1->second.translation.x(),
+                                               it1->second.translation.y(),
+                                               it1->second.translation.z()));
+        edge_marker.points.push_back(makePoint(it2->second.translation.x(),
+                                               it2->second.translation.y(),
+                                               it2->second.translation.z()));
+    }
+
+    if (!edge_marker.points.empty()) edge_marker_array.markers.push_back(edge_marker);
+
+    map_object_marker_pub_.publish(object_marker_array);
+    map_edge_marker_pub_.publish(edge_marker_array);
+    ROS_INFO("Published map objects to /msgloc_map_objects and edges to /msgloc_map_edges (nodes=%zu, edges=%zu, frame=%s)",
+             loadedData.graph.nodes.size(),
+             loadedData.graph.edges.size(),
+             rviz_frame_id_.c_str());
+}
+
+void publishEstimatedPose(const gtsam::Pose3& pose, double stamp_sec, int frame_index) {
+    const ros::Time stamp = (std::isfinite(stamp_sec) && stamp_sec > 0.0)
+                                ? ros::Time(stamp_sec)
+                                : ros::Time::now();
+
+    const gtsam::Point3 t = pose.translation();
+    const gtsam::Quaternion q = pose.rotation().toQuaternion();
+
+    nav_msgs::Odometry odom;
+    odom.header.frame_id = rviz_frame_id_;
+    odom.header.stamp = stamp;
+    odom.child_frame_id = pose_child_frame_id_;
+    odom.pose.pose.position.x = t.x();
+    odom.pose.pose.position.y = t.y();
+    odom.pose.pose.position.z = t.z();
+    odom.pose.pose.orientation.x = q.x();
+    odom.pose.pose.orientation.y = q.y();
+    odom.pose.pose.orientation.z = q.z();
+    odom.pose.pose.orientation.w = q.w();
+    pose_odom_pub_.publish(odom);
+
+    const auto R = pose.rotation().matrix();
+    const double arrow_len = 0.35;
+    geometry_msgs::Point start = makePoint(t.x(), t.y(), t.z());
+    geometry_msgs::Point end = makePoint(t.x() + arrow_len * R(0, 2),
+                                         t.y() + arrow_len * R(1, 2),
+                                         t.z() + arrow_len * R(2, 2));
+
+    visualization_msgs::Marker arrow;
+    arrow.header.frame_id = rviz_frame_id_;
+    arrow.header.stamp = stamp;
+    arrow.ns = "msgloc_pose_arrows";
+    arrow.id = pose_marker_id_++;
+    arrow.type = visualization_msgs::Marker::ARROW;
+    arrow.action = visualization_msgs::Marker::ADD;
+    arrow.points.push_back(start);
+    arrow.points.push_back(end);
+    arrow.scale.x = 0.035;
+    arrow.scale.y = 0.10;
+    arrow.scale.z = 0.12;
+    arrow.color.r = 1.0;
+    arrow.color.g = 0.25;
+    arrow.color.b = 0.05;
+    arrow.color.a = 0.95;
+    arrow.lifetime = ros::Duration(0.0);
+    pose_arrow_markers_.push_back(arrow);
+    pose_path_points_.push_back(start);
+
+    visualization_msgs::Marker path;
+    path.header.frame_id = rviz_frame_id_;
+    path.header.stamp = stamp;
+    path.ns = "msgloc_pose_path";
+    path.id = 0;
+    path.type = visualization_msgs::Marker::LINE_STRIP;
+    path.action = visualization_msgs::Marker::ADD;
+    path.scale.x = 0.025;
+    path.color.r = 1.0;
+    path.color.g = 0.85;
+    path.color.b = 0.05;
+    path.color.a = 0.95;
+    path.lifetime = ros::Duration(0.0);
+    path.points = pose_path_points_;
+
+    visualization_msgs::MarkerArray marker_array;
+    marker_array.markers.reserve(pose_arrow_markers_.size() + 2);
+    marker_array.markers.push_back(makeDeleteAllMarker(stamp));
+    marker_array.markers.insert(marker_array.markers.end(),
+                                pose_arrow_markers_.begin(),
+                                pose_arrow_markers_.end());
+    if (pose_path_points_.size() >= 2) marker_array.markers.push_back(path);
+    pose_marker_pub_.publish(marker_array);
+
+    ROS_INFO("Published estimated pose marker for frame %d to /msgloc_pose_markers (total poses=%zu)",
+             frame_index,
+             pose_arrow_markers_.size());
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1321,6 +1580,10 @@ void run_sequence_offline(size_t si, int start_fi = 0, int end_fi = -1) {
             Total_Count, Failure_Count, Success_Count
         );
         // Save pose results: write only successful frames (sign==0)
+        if (sign == 0) {
+            publishEstimatedPose(current_pose, image_timestamp, fi);
+        }
+
         if (sign == 0 && pose_file_ofs) {
             const gtsam::Point3 t = current_pose.translation();
             const gtsam::Quaternion q = current_pose.rotation().toQuaternion();
@@ -1356,6 +1619,12 @@ int main(int argc, char** argv) {
 
     msgloc.run_sequence_offline(static_cast<size_t>(g_msgloc.sequenceIndex), g_msgloc.startFrame, g_msgloc.endFrame);
 
+    bool rviz_keep_alive = false;
+    pnh.param<bool>("rviz_keep_alive", rviz_keep_alive, rviz_keep_alive);
+    if (rviz_keep_alive) {
+        ROS_INFO("rviz_keep_alive=true: keeping backend_node alive for RViz subscribers.");
+        ros::spin();
+    }
 
     return 0;
 }
