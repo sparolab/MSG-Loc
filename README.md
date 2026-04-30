@@ -22,7 +22,9 @@
   
 <b>[Inha University, Spatial AI and Robotics Lab (SPARO)](https://sparolab.github.io/)</b>
   <br />
-  <b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b> & <b>[Kyungpook National University (KNU)](https://www.knu.ac.kr/)</b>
+<b>[Kyungpook National University (KNU), Robotics, Mobility and AI Lab (RoMA)](https://sites.google.com/view/knu-robot)</b>
+  <br />
+<b>[Korea Institute of Machinery & Materials (KIMM)](https://www.kimm.re.kr/)</b>
 <!-- Demo GIFs -->
 <p align="center">
   <img src="fig/git_desk.gif" alt="Desk Demo" width="49%" />
@@ -164,7 +166,6 @@ If you find this repository useful, please consider citing:
   volume={11},
   number={2},
   pages={2066-2073},
-  keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic scene understanding;localization;graph matching;object-based SLAM},
   doi={10.1109/LRA.2025.3643293}
 }
 ```
@@ -174,11 +175,11 @@ If you find this repository useful, please consider citing:
 ## Acknowledgement
 
 <p align="center">
-  <img src="fig/inha.png" alt="Inha University" width="20%" />
+  <img src="fig/inha.png" alt="Inha University" width="15%" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="fig/knu.jpg" alt="Kyungpook National University" width="20%" />
+  <img src="fig/knu.jpg" alt="Kyungpook National University" width="15%" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="25%" />
+  <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="20%" />
 </p>
 
 We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we extend our sincere gratitude to the members of the SPARO Lab, Prof. Young-Sik Shin at the RoMA Lab, and KIMM for their valuable support.
