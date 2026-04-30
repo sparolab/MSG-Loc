@@ -40,6 +40,144 @@
 * [Dec, 2025] Project page is now available.
 * [Nov, 2025] 🎉 MSG-Loc has been accepted by IEEE Robotics and Automation Letters (RA-L).
 
+---
+
+## Usage
+
+### 1. Setup
+
+The code is tested on:
+
+- Ubuntu 20.04
+- ROS Noetic
+- CUDA 12.1.1
+- [gtsam_quadrics](https://github.com/qcr/gtsam-quadrics)
+
+Docker image:
+
+Pull the Docker image:
+
+```code
+docker pull leekh951/msg-loc:v1
+```
+
+Run the Docker container:
+
+```code
+xhost +local:root
+docker run -it \
+  --name msgloc_v1 \
+  --gpus all \
+  --network host \
+  --ipc host \
+  --privileged \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -e NVIDIA_DRIVER_CAPABILITIES=all \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  leekh951/msg-loc:v1 \
+  /bin/bash
+```
+
+Build the package:
+
+```code
+cd /root/workspace
+mkdir -p src
+git clone https://github.com/Leekh951/MSG-Loc.git src/MSG-Loc
+source /opt/ros/noetic/setup.bash
+catkin_make
+source devel/setup.bash
+```
+
+Detailed command examples for each dataset are provided in:
+
+```text
+/root/workspace/src/MSG-Loc/scripts.txt
+```
+
+---
+
+### 2. Dataset
+
+Download the datasets and place them under `/root/workspace/dataset_root/`.
+
+- [TUM RGB-D Dataset](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download)
+  - Used sequence: `rgbd_dataset_freiburg2_desk`
+- [ICL-LM Dataset](https://peringlab.org/lmdata/)
+  - Used Diamond sequence: `diamond_walk`
+
+---
+
+### 3. Detection
+
+Default detection results are already provided in `Detection_results/`. Run detection only if you need to regenerate the results or use a different dataset/model.
+
+- Open-set: [Grounding DINO](https://github.com/idea-research/groundingdino), [Tokenize Anything via Prompting](https://github.com/baaivision/tokenize-anything)
+- Closed-set: [YOLOv8 (Multi-label ver)](https://github.com/Leekh951/ultralytics)
+
+Command format:
+
+```code
+rosrun MSG-Loc detection_storage_gdino_lvis.py \
+  _assoc_path:=/root/workspace/dataset_root/<dataset>/associated.txt \
+  _base_path:=/root/workspace/dataset_root/<dataset> \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/<camera>.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/Detection_results \
+  _save_name:=<sequence>_gdino_lvis_detections.json
+```
+
+Detailed detection commands are provided in `scripts.txt`.
+
+---
+
+### 4. SLAM
+
+Default map JSON files are already provided in `SLAM_results/` (for example, `desk_map.json` and `walk_map.json`). Run SLAM only if you need to rebuild the prior semantic map and graph.
+
+Command format:
+
+```code
+rosrun MSG-Loc quadricSLAM.py \
+  _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/<detections>.json \
+  _odom_path:=/root/workspace/dataset_root/<dataset>/<odom>.txt \
+  _base_path:=/root/workspace/dataset_root/<dataset> \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/<camera>.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/SLAM_results \
+  _save_name:=<map>.json
+```
+
+Detailed SLAM commands are provided in `scripts.txt`.
+
+---
+
+### 5. MSG-Loc
+
+Run global localization:
+
+```code
+rosrun MSG-Loc test_node \
+  _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
+  _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/<map>.json \
+  _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/<detections>.json \
+  _base_path:=/root/workspace/dataset_root/<dataset> \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/<camera>.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
+```
+
+Example for Fr2_desk:
+
+```code
+rosrun MSG-Loc test_node \
+  _config:=/root/workspace/src/MSG-Loc/Config/config.yaml \
+  _map_path:=/root/workspace/src/MSG-Loc/SLAM_results/desk_map.json \
+  _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_gdino_lvis_detections.json \
+  _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/MSG-Loc_results
+```
+
+The estimated trajectory is saved to `MSG-Loc_results/pose_results.txt`.
 
 ---
 
@@ -58,7 +196,23 @@ If you find this repository useful, please consider citing:
   doi={10.1109/LRA.2025.3643293}
 }
 ```
+
 ---
+
+## Acknowledgement
+
+We appreciate the open-source contributions of previous authors, and especially thank the authors of the following projects for releasing their code and models to the community:
+
+- [GOReloc](https://github.com/yutongwangBIT/GOReloc)
+- [Semantic Histogram](https://github.com/gxytcrc/semantic-histogram-based-global-localization)
+- [Grounding DINO](https://github.com/idea-research/groundingdino)
+- [Tokenize Anything via Prompting (TAP)](https://github.com/baaivision/tokenize-anything)
+- [OVSAM](https://github.com/HarborYuan/ovsam)
+- [Ultralytics/YOLOv8](https://github.com/ultralytics/ultralytics)
+
+---
+
 ## Contact
 * Gihyeon Lee (leekh951@inha.edu)
+
 ---
