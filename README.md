@@ -159,7 +159,7 @@ roslaunch MSG-Loc msgloc_node.launch \
 The launch file starts `msgloc_node` and RViz with `rviz_msgloc.rviz`. The estimated pose is published on `/msgloc_pose`, visualization markers are published on `/msgloc_map_objects`, `/msgloc_map_edges`, and `/msgloc_pose_markers`, and the estimated trajectory is saved to `MSG-Loc_results/pose_results.txt`.
 
 <p align="center">
-  <video src="fig/msgloc.mp4" width="90%" controls></video>
+  <img src="fig/msgloc.gif" alt="MSG-Loc RViz Demo" width="90%" />
 </p>
 
 ---
