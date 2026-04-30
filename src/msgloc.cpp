@@ -538,7 +538,7 @@ private:
         map_object_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_map_objects", 1, true);
         map_edge_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_map_edges", 1, true);
         pose_marker_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/msgloc_pose_markers", 1, true);
-        pose_odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/msgloc_pose_odom", 50);
+        pose_odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/msgloc_pose", 50);
     }
 
 public:
