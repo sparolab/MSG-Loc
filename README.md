@@ -174,11 +174,17 @@ If you find this repository useful, please consider citing:
 ## Acknowledgement
 
 <p align="center">
+<<<<<<< HEAD
   <img src="fig/inha.png" alt="Inha University" width="20%" />
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="fig/knu.jpg" alt="Kyungpook National University" width="20%" />
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="25%" />
+=======
+  <img src="fig/inha.png" alt="Inha University" width="30%" />
+  <img src="fig/knu.jpg" alt="Kyungpook National University" width="30%" />
+  <img src="fig/kimm.png" alt="Korea Institute of Machinery & Materials" width="30%" />
+>>>>>>> origin/main
 </p>
 
 We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we extend our sincere gratitude to the members of the SPARO Lab, Prof. Young-Sik Shin at the RoMA Lab, and KIMM for their valuable support.
