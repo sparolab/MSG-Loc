@@ -66,12 +66,12 @@ catkin_package(
 
 # Catkin Python scripts
 catkin_install_python(PROGRAMS
-  src/quadric_script/detection_storage_gdino_lvis.py
-  src/quadric_script/detection_storage_gdino_coco.py
-  src/quadric_script/detection_storage_yolo_lvis.py
-  src/quadric_script/detection_storage_yolo_coco.py
-  src/quadric_script/quadricSLAM.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  # src/quadric_script/detection_storage_gdino_lvis.py
+  # src/quadric_script/detection_storage_gdino_coco.py
+  # src/quadric_script/detection_storage_yolo_lvis.py
+  # src/quadric_script/detection_storage_yolo_coco.py
+  # src/quadric_script/quadricSLAM.py
+  # DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 # Install launch files
