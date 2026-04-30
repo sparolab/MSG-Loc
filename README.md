@@ -52,7 +52,7 @@ The code is tested on:
 - Ubuntu 20.04
 - ROS Noetic
 - CUDA 12.1.1
-- CMake 3.22
+- CMake 3.22.3
 - [gtsam_quadrics](https://github.com/qcr/gtsam-quadrics)
 
 Docker image:
