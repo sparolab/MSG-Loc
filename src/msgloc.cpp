@@ -1608,10 +1608,7 @@ int main(int argc, char** argv) {
     ros::NodeHandle pnh("~");
 
     std::string config_path = g_msgloc.config_path;
-    const bool has_config = pnh.getParam("config", config_path);
-    if (!has_config && pnh.getParam("comfig", config_path)) {
-        ROS_WARN("Using private param '~comfig'. Prefer '~config' if this was a typo.");
-    }
+    pnh.getParam("config", config_path);
     g_msgloc.loadFromYaml(config_path);
     g_msgloc.loadRosPathParams(pnh);
 

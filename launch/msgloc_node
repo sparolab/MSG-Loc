@@ -1,0 +1,27 @@
+<launch>
+  <arg name="_config" default="$(find MSG-Loc)/Config/config.yaml" />
+  <arg name="_map_path" default="$(find MSG-Loc)/SLAM_results/desk_gdino_lvis_map.json" />
+  <arg name="_detection_path" default="$(find MSG-Loc)/Detection_results/desk_gdino_lvis_detections.json" />
+  <arg name="_base_path" default="/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk" />
+  <arg name="_cam_info" default="$(find MSG-Loc)/Cameras/TUM2.yaml" />
+  <arg name="_output_dir" default="$(find MSG-Loc)/MSG-Loc_results" />
+  <arg name="_rviz_frame_id" default="test" />
+  <arg name="_pose_child_frame_id" default="msgloc_camera" />
+  <arg name="_rviz_keep_alive" default="true" />
+  <arg name="_rviz" default="true" />
+  <arg name="_rviz_config" default="$(find MSG-Loc)/rviz_msgloc.rviz" />
+
+  <node pkg="MSG-Loc" type="msgloc_node" name="backend_node" output="screen">
+    <param name="config" value="$(arg _config)" />
+    <param name="map_path" value="$(arg _map_path)" />
+    <param name="detection_path" value="$(arg _detection_path)" />
+    <param name="base_path" value="$(arg _base_path)" />
+    <param name="cam_info" value="$(arg _cam_info)" />
+    <param name="output_dir" value="$(arg _output_dir)" />
+    <param name="rviz_frame_id" value="$(arg _rviz_frame_id)" />
+    <param name="pose_child_frame_id" value="$(arg _pose_child_frame_id)" />
+    <param name="rviz_keep_alive" value="$(arg _rviz_keep_alive)" />
+  </node>
+
+  <node if="$(arg _rviz)" pkg="rviz" type="rviz" name="rviz_msgloc" args="-d $(arg _rviz_config)" output="screen" />
+</launch>
