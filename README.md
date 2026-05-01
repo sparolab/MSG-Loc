@@ -175,6 +175,10 @@ The launch file starts `msgloc_node` and RViz with `rviz_msgloc.rviz`. The estim
   </tr>
 </table>
 
+<p align="left">
+  ※ Results may vary depending on the SLAM settings.
+</p>
+
 ---
 
 ## Citation
