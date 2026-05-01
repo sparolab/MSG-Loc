@@ -162,6 +162,19 @@ The launch file starts `msgloc_node` and RViz with `rviz_msgloc.rviz`. The estim
   <img src="fig/msgloc.gif" alt="MSG-Loc RViz Demo" width="90%" />
 </p>
 
+#### Performance
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="fig/coco_results.png" alt="COCO Performance Results" width="100%" />
+    </td>
+    <td align="center" width="50%">
+      <img src="fig/lvis_results.png" alt="LVIS Performance Results" width="100%" />
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## Citation
