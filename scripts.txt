@@ -175,6 +175,7 @@ rosrun MSG-Loc quadricSLAM.py \
 -------------------------------------Detection---------------------------------------
 ##### Fr2_desk #####
 rosrun MSG-Loc detection_storage_gdino_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/associated.txt \
   _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
@@ -182,6 +183,7 @@ rosrun MSG-Loc detection_storage_gdino_lvis.py \
   _save_name:=desk_gdino_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_gdino_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/associated.txt \
   _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
@@ -189,6 +191,7 @@ rosrun MSG-Loc detection_storage_gdino_coco.py \
   _save_name:=desk_gdino_coco_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/associated.txt \
   _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
@@ -196,6 +199,7 @@ rosrun MSG-Loc detection_storage_yolo_lvis.py \
   _save_name:=desk_yolo_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/associated.txt \
   _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
@@ -204,6 +208,7 @@ rosrun MSG-Loc detection_storage_yolo_coco.py \
 
 ##### Walk #####
 rosrun MSG-Loc detection_storage_gdino_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -211,6 +216,7 @@ rosrun MSG-Loc detection_storage_gdino_lvis.py \
   _save_name:=walk_gdino_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_gdino_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -218,6 +224,7 @@ rosrun MSG-Loc detection_storage_gdino_coco.py \
   _save_name:=walk_gdino_coco_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -225,6 +232,7 @@ rosrun MSG-Loc detection_storage_yolo_lvis.py \
   _save_name:=walk_yolo_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -233,6 +241,7 @@ rosrun MSG-Loc detection_storage_yolo_coco.py \
 
 ##### Head #####
 rosrun MSG-Loc detection_storage_gdino_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk_head/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk_head \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -240,6 +249,7 @@ rosrun MSG-Loc detection_storage_gdino_lvis.py \
   _save_name:=head_gdino_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_gdino_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk_head/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk_head \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -247,6 +257,7 @@ rosrun MSG-Loc detection_storage_gdino_coco.py \
   _save_name:=head_gdino_coco_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk_head/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk_head \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \
@@ -254,6 +265,7 @@ rosrun MSG-Loc detection_storage_yolo_lvis.py \
   _save_name:=head_yolo_lvis_detections.json
 
 rosrun MSG-Loc detection_storage_yolo_coco.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
   _assoc_path:=/root/workspace/dataset_root/diamond_walk_head/associated.txt \
   _base_path:=/root/workspace/dataset_root/diamond_walk_head \
   _cam_info:=/root/workspace/src/MSG-Loc/Cameras/ICL.yaml \

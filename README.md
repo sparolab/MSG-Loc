@@ -118,7 +118,17 @@ Generate object detection and multi-label prediction results:
 - Open-set: [Grounding DINO](https://github.com/idea-research/groundingdino), [Tokenize Anything via Prompting](https://github.com/baaivision/tokenize-anything)
 - Closed-set: [YOLOv8 (Multi-label ver)](https://github.com/Leekh951/ultralytics)
 
-TBU
+Example for Fr2_desk using Grounding DINO + TAP with LVIS labels:
+
+```bash
+rosrun MSG-Loc detection_storage_gdino_lvis.py \
+  _assets_dir:=/root/workspace/src/MSG-Loc/Detection_assets \
+  _assoc_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/associated.txt \
+  _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/Detection_results \
+  _save_name:=desk_gdino_lvis_detections.json
+```
 
 ---
 
@@ -126,7 +136,17 @@ TBU
 Build the prior semantic map and graph:
 
 
-TBU
+Example for Fr2_desk using the generated detection results:
+
+```bash
+rosrun MSG-Loc quadricSLAM.py \
+  _detection_path:=/root/workspace/src/MSG-Loc/Detection_results/desk_gdino_lvis_detections.json \
+  _odom_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk/desk_odom_results.txt \
+  _base_path:=/root/workspace/dataset_root/rgbd_dataset_freiburg2_desk \
+  _cam_info:=/root/workspace/src/MSG-Loc/Cameras/TUM2.yaml \
+  _output_dir:=/root/workspace/src/MSG-Loc/SLAM_results \
+  _save_name:=desk_gdino_lvis_map.json
+```
 
 ---
 
